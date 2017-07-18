@@ -1,5 +1,9 @@
-var groceryList = [];
-var total = 0;
+var groceryList = []; //creates empty array for list of groceries
+var total = 0; //sets total variable to calculate total later
+
+function calcTax(subtotal) {
+  total += total * 0.06 //adds sales tax
+}
 
 var groceries = {
 	banana: {name: "Banana", price: 0.2, quantity: 10},
@@ -12,13 +16,15 @@ var groceries = {
 }
 
 for (var key in groceries) {
-	groceryList.push(groceries[key]);
+	groceryList.push(groceries[key]); //push the objects from the groceries object to the list array
 }
 
 for (var i = 0; i < groceryList.length; i++) {
   total += (groceryList[i].price * groceryList[i].quantity);
   console.log("Item: " + groceryList[i].quantity + "x" + " " + groceryList[i].name + ", Price: $" + groceryList[i].price.toFixed(2) + "/each");
-}
+} //runs through the grocery list, calculates total based on price + qty of groceries in the array & logs the qty, name and price of each item
 
 console.log("");
-console.log("The total for your basket is $" + total.toFixed(2));
+console.log("Subtotal: $" + total.toFixed(2)); //logs the subtotal for all the groceries
+calcTax(total);
+console.log("The total for your basket is $" + total.toFixed(2)); //logs the final total
